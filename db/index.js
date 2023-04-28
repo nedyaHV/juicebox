@@ -53,7 +53,7 @@ const updateUser = async (id, fields = []) => {
 
 const getUserById = async (userId) => {
     try {
-        const { rows:user } = await client.query(`
+        const { rows: [ user ] } = await client.query(`
             SELECT id, username, name, location, active FROM users
             WHERE id=$1
         `, [ userId ]);
@@ -256,6 +256,13 @@ const getPostById = async(postId) => {
             SELECT * FROM posts
             WHERE id = $1;
         `, [postId]);
+
+        if (!post) {
+            throw {
+                name: "postNotFoundError",
+                message: "Could not find a post with that postId"
+            };
+        }
         
         const { rows: tags} = await client.query(`
             SELECT tags.* FROM tags
