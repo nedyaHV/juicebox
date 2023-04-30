@@ -173,6 +173,7 @@ const rebuildDB = async () => {
 
     } catch (error) {
         console.error(error);
+        throw error;
     } 
 }
 
