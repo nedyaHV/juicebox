@@ -8,12 +8,16 @@ const client = new Client(connectionString);
 //----------------Users----------------//
 
 const getAllUsers = async () => {
-    const { rows } = await client.query(
-        `SELECT id, username, name, location, active
-        FROM users;
-        `);
-
-        return rows;
+    try {
+        const { rows } = await client.query(
+            `SELECT id, username, name, location, active
+            FROM users;
+            `);
+    
+            return rows;
+    } catch (error) {
+        throw error;
+    }
 }
 
 const createUser = async ({ username, password, name, location }) => {
