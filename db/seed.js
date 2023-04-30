@@ -177,7 +177,7 @@ const rebuildDB = async () => {
     } 
 }
 
-async function testDB() {
+const testDB = async () => {
     try {
       console.log("Starting to test database...");
   
