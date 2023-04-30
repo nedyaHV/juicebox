@@ -21,11 +21,15 @@ tagsRouter.get("/:tagName/posts", async (req, res, next) => {
 });
 
 tagsRouter.get("/", async (req,res) => {
-    const tags = await getAllTags();
+    try {
+        const tags = await getAllTags();
 
-    res.send({
-        tags
-    });
+        res.send({
+            tags
+        });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 module.exports = tagsRouter;
