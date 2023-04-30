@@ -13,6 +13,7 @@ const {  client,
     addTagsToPost,
     getPostById,
     getPostsByTagName } = require('./index');
+    
 
 const dropTables = async () => {
     try {

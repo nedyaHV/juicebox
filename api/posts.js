@@ -4,6 +4,7 @@ const postsRouter = express.Router();
 const { getAllPosts, createPosts, updatePost, getPostById } = require("../db");
 const { requireUser } = require("./utils");
 
+
 postsRouter.post("/", requireUser, async (req, res, next) => {
     // res.send({ message: "Under construction"});
 
